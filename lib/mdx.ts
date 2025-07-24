@@ -64,7 +64,7 @@ export function getProjectBySlug(slug: string): {
       frontmatter: { ...data, slug } as ProjectFrontmatter,
       content: htmlContent,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -83,7 +83,7 @@ export function getBlogBySlug(slug: string): {
       frontmatter: { ...data, slug } as BlogFrontmatter,
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

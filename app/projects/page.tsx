@@ -1,5 +1,6 @@
 import { getAllProjects } from '@/lib/mdx';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -30,9 +31,11 @@ export default function ProjectsPage() {
               >
                 {/* Project Image */}
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={400}
+                    height={225}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/mdx';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -16,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   
   if (!project) {
     return {
@@ -35,8 +37,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();
@@ -86,9 +89,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       {/* Project Image */}
       <div className="max-w-4xl mx-auto px-4 -mt-8">
         <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-          <img
+          <Image
             src={frontmatter.image}
             alt={frontmatter.title}
+            width={800}
+            height={400}
             className="w-full h-96 object-cover"
           />
         </div>
