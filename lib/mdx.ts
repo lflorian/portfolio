@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { marked } from 'marked';
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
@@ -56,9 +57,12 @@ export function getProjectBySlug(slug: string): {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Convert markdown content to HTML
+    const htmlContent = marked.parse(content) as string;
+
     return {
       frontmatter: { ...data, slug } as ProjectFrontmatter,
-      content,
+      content: htmlContent,
     };
   } catch (error) {
     return null;
