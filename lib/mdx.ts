@@ -7,23 +7,18 @@ const contentDirectory = path.join(process.cwd(), 'content');
 export interface ProjectFrontmatter {
   title: string;
   description: string;
-  shortDescription: string;
   image: string;
-  technologies: string[];
   githubUrl?: string;
-  liveUrl?: string;
-  featured: boolean;
-  completedAt: string;
+  appUrl?: string;
+  date: string;
   slug: string;
 }
 
 export interface BlogFrontmatter {
   title: string;
   description: string;
-  publishedAt: string;
-  updatedAt?: string;
-  tags: string[];
-  featured: boolean;
+  image: string;
+  date: string;
   slug: string;
 }
 
@@ -98,9 +93,9 @@ export function getAllProjects(): ProjectFrontmatter[] {
     })
     .filter(Boolean) as ProjectFrontmatter[];
 
-  // Sort by completion date (newest first)
+  // Sort by date (newest first)
   return projects.sort((a, b) => 
-    new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime()
+    new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
 
@@ -113,12 +108,8 @@ export function getAllBlogPosts(): BlogFrontmatter[] {
     })
     .filter(Boolean) as BlogFrontmatter[];
 
-  // Sort by publish date (newest first)
-  return posts.sort((a, b) => 
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  // Sort by date (newest first)
+  return posts.sort((a, b) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-}
-
-export function getFeaturedProjects(): ProjectFrontmatter[] {
-  return getAllProjects().filter(project => project.featured);
 }
