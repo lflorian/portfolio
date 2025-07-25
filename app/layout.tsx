@@ -7,7 +7,7 @@ import { Header } from "./sections/Header";
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
 
 export const metadata: Metadata = {
-  title: "florian lammert | portfolio",
+  title: "portfolio | florianlammert",
   description: "Learn more about my work and projects.",
 };
 

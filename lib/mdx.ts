@@ -13,6 +13,9 @@ export interface ProjectFrontmatter {
   appUrl?: string;
   date: string;
   slug: string;
+  images?: string[];
+  overview?: string;
+  approach?: string;
 }
 
 export interface BlogFrontmatter {

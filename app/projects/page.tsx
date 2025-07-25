@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'projects | portfolio',
+  title: 'projects | florianlammert',
   description: 'A collection of my software development projects and technical work.',
 };
 
@@ -12,9 +12,13 @@ export default function ProjectsPage() {
   const projects = getAllProjects();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen w-full bg-white">
       {/* Projects Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-6xl mx-auto px-6 pt-4 pb-32">
+        <h1 className="text-7xl md:text-7xl pt-4 font-bold text-left my-8">
+        Projects
+        </h1>
+
         {projects.length === 0 ? (
           <div className="text-center py-16">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
@@ -22,60 +26,41 @@ export default function ProjectsPage() {
             </h2>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="md:space-y-6 space-y-12">
             {projects.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200"
-              >
-                {/* Project Image */}
-                <div className="aspect-video overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={400}
-                    height={225}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6">
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Date and Links */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-sm text-gray-500">
-                      {new Date(project.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                      })}
-                    </span>
-
-                    <div className="flex items-center gap-3">
-                      {project.appUrl && (
-                        <span className="text-sm text-blue-600 font-medium">
-                          App Store
-                        </span>
-                      )}
-                      {project.githubUrl && (
-                        <span className="text-sm text-gray-600">
-                          GitHub
-                        </span>
-                      )}
-                    </div>
+              <div key={project.slug} className="bg-white flex flex-col md:flex-row items-center gap-8">
+                {/* Image placeholder */}
+                <div className="w-full md:w-1/3">
+                  <div className="aspect-square bg-white rounded-3xl shadow-lg overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={800}
+                      height={800}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                 </div>
-              </Link>
+
+              {/* Content section */}
+              <div className="md:w-1/2 space-y-3">
+                <h2 className="text-5xl font-bold text-gray-900">
+                  {project.title}
+                </h2>
+
+                <p className="text-gray-500 font-medium text-lg leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex gap-4">
+                  <Link href={`/projects/${project.slug}`}>
+                    <button className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
+                      Learn More
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
             ))}
           </div>
         )}
