@@ -128,7 +128,7 @@ export default function Home() {
         <div className="mt-24">
           <div className="bg-gray-100 rounded-3xl px-12 py-10">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Let's Connect 👋
+              Let&apos;s Connect 👋
             </h2>
             <div className="pt-4">
               <Link 

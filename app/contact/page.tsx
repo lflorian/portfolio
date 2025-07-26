@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
@@ -20,10 +19,10 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-2xl font-bold mb-4 text-gray-900">
-                    Let's work together!
+                    Let&apos;s work together!
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
-                    I'm always open to discussing new ideas, 
+                    I&apos;m always open to discussing new ideas, 
                     interesting projects and collaborations.
                   </p>
                 </div>
