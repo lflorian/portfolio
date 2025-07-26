@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google';
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
+
 import { Header } from "./sections/Header";
+import { Footer } from "./sections/Footer";
 
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
 
@@ -18,9 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={twMerge(montserrat.variable, montserrat.className, "bg-white text-gray-900 antialiased")}>
+      <body className={twMerge(montserrat.variable, montserrat.className, "bg-black text-gray-900 antialiased")}>
         <Header />
-        {children}
+        <main className="bg-white">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
