@@ -2,6 +2,7 @@ import { getAllProjects } from '@/lib/mdx';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { StaggeredAnimation } from '@/app/components/StaggeredAnimation';
 
 export const metadata: Metadata = {
   title: 'projects | florianlammert',
@@ -26,9 +27,13 @@ export default function ProjectsPage() {
             </h2>
           </div>
         ) : (
-          <div className="md:space-y-6 space-y-12">
+          <StaggeredAnimation 
+            animation="scaleAndFade" 
+            staggerDelay={75}
+            duration={400}
+          >
             {projects.map((project) => (
-              <div key={project.slug} className="bg-white flex flex-col md:flex-row items-center gap-8">
+              <div key={project.slug} className="bg-white flex flex-col md:flex-row items-center gap-8 md:mb-6 mb-12">
                 {/* Image placeholder */}
                 <div className="w-full md:w-1/3">
                   <div className="aspect-square bg-white rounded-3xl shadow-lg overflow-hidden">
@@ -62,7 +67,7 @@ export default function ProjectsPage() {
               </div>
             </div>
             ))}
-          </div>
+          </StaggeredAnimation>
         )}
       </div>
     </div>

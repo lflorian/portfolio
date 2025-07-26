@@ -1,4 +1,5 @@
 import { HeroSection } from "./sections/Hero";
+import { SkillsSection } from "./sections/Skills";
 import { getAllProjects, getAllBlogPosts } from '@/lib/mdx';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -119,6 +120,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Skills Section */}
+        <SkillsSection />
 
         {/* Contact Section */}
         <div className="mt-24">

@@ -11,6 +11,9 @@ const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat
 export const metadata: Metadata = {
   title: "portfolio | florianlammert",
   description: "Learn more about my work and projects.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
