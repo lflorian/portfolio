@@ -1,11 +1,141 @@
 import { HeroSection } from "./sections/Hero";
+import { getAllProjects, getAllBlogPosts } from '@/lib/mdx';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
+  const projects = getAllProjects();
+  const blogPosts = getAllBlogPosts();
+
   return (
     <main className="relative overflow-hidden">
       <HeroSection />
       <div className="max-w-6xl mx-auto px-6 pt-4 pb-32">
+        {/* Projects Section */}
+        <div className="mt-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              Recent Projects
+            </h2>
+            <Link 
+              href="/projects"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+            >
+              View All →
+            </Link>
+          </div>
+          
+          {/* Horizontal Scroll Container */}
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-6 w-max">
+              {projects.slice(0, 4).map((project) => (
+                <Link 
+                  key={project.slug} 
+                  href={`/projects/${project.slug}`}
+                  className="group"
+                >
+                  <div className="w-80 bg-white transition-shadow duration-300">
+                    {/* Project Image */}
+                    <div className="aspect-square bg-white rounded-2xl overflow-hidden mb-4">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    
+                    {/* Project Info */}
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
 
+        {/* Blog Section */}
+        <div className="mt-24">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              Recent Blog Posts
+            </h2>
+            <Link 
+              href="/blog"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+            >
+              View All →
+            </Link>
+          </div>
+          
+          {/* Horizontal Scroll Container */}
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-6 w-max">
+              {blogPosts.slice(0, 4).map((post) => (
+                <Link 
+                  key={post.slug} 
+                  href={`/blog/${post.slug}`}
+                  className="group"
+                >
+                  <div className="w-80 bg-white transition-shadow duration-300">
+                    {/* Blog Image */}
+                    <div className="aspect-square bg-white rounded-2xl overflow-hidden mb-4">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    
+                    {/* Blog Info */}
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">
+                        {post.description}
+                      </p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider">
+                        {new Date(post.date).toLocaleDateString('en-US', { 
+                          month: 'short', 
+                          day: 'numeric', 
+                          year: 'numeric' 
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Section */}
+        <div className="mt-24">
+          <div className="bg-gray-100 rounded-3xl px-12 py-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              Let's Connect 👋
+            </h2>
+            <div className="pt-4">
+              <Link 
+                href="/contact"
+                className="inline-block bg-black text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-colors duration-200"
+              >
+                Get In Touch
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
