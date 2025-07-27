@@ -31,7 +31,7 @@ export default function ImprintPage() {
                     <section>
                         <h2 className="text-xl font-semibold mb-2">Kontakt</h2>
                         <p>
-                            E-Mail: rundholz.hebezeuge-0r@icloud.com
+                            E-Mail: hello@florianlammert.com
                         </p>
                     </section>
 

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { twMerge } from "tailwind-merge";
 
 import { Header } from "./sections/Header";
 import { Footer } from "./sections/Footer";
