@@ -49,7 +49,7 @@ export default function ProjectsPage() {
 
               {/* Content section */}
               <div className="md:w-1/2 space-y-3">
-                <h2 className="text-5xl font-bold text-gray-900">
+                <h2 className="text-5xl font-bold text-gray-900 break-words hyphens-auto">
                   {project.title}
                 </h2>
 
