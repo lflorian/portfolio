@@ -2,7 +2,7 @@
 
 @layer base {
   html {
-    font-family: var(--font-montserrat), system-ui, sans-serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
   }
   
   .nav-item {

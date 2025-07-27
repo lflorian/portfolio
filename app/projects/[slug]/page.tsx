@@ -75,8 +75,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <Image
                   src={frontmatter.images[0]}
                   alt={`${frontmatter.title} screenshot 1`}
-                  width={1200}
-                  height={600}
+                  width={1920}
+                  height={1080}
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
