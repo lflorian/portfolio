@@ -62,11 +62,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {frontmatter.title}
             </h1>
 
-            {frontmatter.appUrl && (
-              <a href={frontmatter.appUrl} className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors inline-block">
-                Download App
-              </a>
-            )}
+            <div className="flex gap-4">
+              {frontmatter.appUrl && (
+                <a href={frontmatter.appUrl} className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors inline-block">
+                  Download App
+                </a>
+              )}
+              
+              {frontmatter.websiteUrl && (
+                <a href={frontmatter.websiteUrl} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
+                  Visit Website
+                </a>
+              )}
+            </div>
           </div>
         </AnimatedElement>
 

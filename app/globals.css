@@ -30,6 +30,15 @@
     overflow: hidden;
   }
   
+  /* Hide scrollbar for webkit browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+  
   /* Custom prose styles for markdown content */
   .prose h1 {
     font-size: 2.25rem;

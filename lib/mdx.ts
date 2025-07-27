@@ -11,6 +11,7 @@ export interface ProjectFrontmatter {
   image: string;
   githubUrl?: string;
   appUrl?: string;
+  websiteUrl?: string;
   date: string;
   isActive?: boolean;
   slug: string;

@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <main className="relative overflow-hidden">
       <HeroSection />
-      <div className="max-w-6xl mx-auto px-6 pt-4 pb-32">
-        {/* Projects Section */}
+      <div className="max-w-6xl mx-auto px-6 pt-4">
+        {/* Projects Section Header */}
         <AnimatedElement animation="fadeUp" delay={200}>
           <div className="mt-16">
             <div className="flex items-center justify-between mb-8">
@@ -28,52 +28,56 @@ export default function Home() {
                 View All →
               </Link>
             </div>
-            
-            {/* Horizontal Scroll Container */}
-            <div className="overflow-x-auto pb-4">
-              <div className="flex gap-6 w-max">
-                <StaggeredAnimation 
-                  animation="scaleAndFade" 
-                  staggerDelay={100}
-                  duration={400}
-                >
-                  {projects.slice(0, 4).map((project) => (
-                    <Link 
-                      key={project.slug} 
-                      href={`/projects/${project.slug}`}
-                      className="group"
-                    >
-                      <div className="w-80 bg-white transition-shadow duration-300">
-                        {/* Project Image */}
-                        <div className="aspect-square bg-white rounded-2xl overflow-hidden mb-4">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            width={800}
-                            height={800}
-                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                        
-                        {/* Project Info */}
-                        <div className="space-y-2">
-                          <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
-                            {project.title}
-                          </h3>
-                          <p className="text-gray-600 text-sm line-clamp-2">
-                            {project.description}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </StaggeredAnimation>
-              </div>
-            </div>
           </div>
         </AnimatedElement>
+      </div>
+      
+      {/* Projects Horizontal Scroll - Full Width */}
+      <AnimatedElement animation="fadeUp" delay={250}>
+        <div className="overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex gap-6 w-max pl-6 sm:pl-8 lg:pl-[calc((100vw-72rem)/2+1.5rem)]">
+            <StaggeredAnimation 
+              animation="scaleAndFade" 
+              staggerDelay={100}
+              duration={400}
+            >
+              {projects.slice(0, 4).map((project) => (
+                <Link 
+                  key={project.slug} 
+                  href={`/projects/${project.slug}`}
+                  className="group"
+                >
+                  <div className="w-80 bg-white transition-shadow duration-300">
+                    {/* Project Image */}
+                    <div className="aspect-square bg-white rounded-2xl overflow-hidden mb-4">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={800}
+                        height={800}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    
+                    {/* Project Info */}
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </StaggeredAnimation>
+          </div>
+        </div>
+      </AnimatedElement>
 
-        {/* Blog Section */}
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Blog Section Header */}
         <AnimatedElement animation="fadeUp" delay={300}>
           <div className="mt-24">
             <div className="flex items-center justify-between mb-8">
@@ -87,58 +91,62 @@ export default function Home() {
                 View All →
               </Link>
             </div>
-            
-            {/* Horizontal Scroll Container */}
-            <div className="overflow-x-auto pb-4">
-              <div className="flex gap-6 w-max">
-                <StaggeredAnimation 
-                  animation="scaleAndFade" 
-                  staggerDelay={100}
-                  duration={400}
-                >
-                  {blogPosts.slice(0, 4).map((post) => (
-                    <Link 
-                      key={post.slug} 
-                      href={`/blog/${post.slug}`}
-                      className="group"
-                    >
-                      <div className="w-80 bg-white transition-shadow duration-300">
-                        {/* Blog Image */}
-                        <div className="aspect-square bg-white rounded-2xl overflow-hidden mb-4">
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            width={800}
-                            height={800}
-                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                        
-                        {/* Blog Info */}
-                        <div className="space-y-2">
-                          <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
-                            {post.title}
-                          </h3>
-                          <p className="text-gray-600 text-sm line-clamp-2">
-                            {post.description}
-                          </p>
-                          <p className="text-xs text-gray-400 uppercase tracking-wider">
-                            {new Date(post.date).toLocaleDateString('en-US', { 
-                              month: 'short', 
-                              day: 'numeric', 
-                              year: 'numeric' 
-                            })}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </StaggeredAnimation>
-              </div>
-            </div>
           </div>
         </AnimatedElement>
+      </div>
+      
+      {/* Blog Horizontal Scroll - Full Width */}
+      <AnimatedElement animation="fadeUp" delay={350}>
+        <div className="overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex gap-6 w-max pl-6 sm:pl-8 lg:pl-[calc((100vw-72rem)/2+1.5rem)]">
+            <StaggeredAnimation 
+              animation="scaleAndFade" 
+              staggerDelay={100}
+              duration={400}
+            >
+              {blogPosts.slice(0, 4).map((post) => (
+                <Link 
+                  key={post.slug} 
+                  href={`/blog/${post.slug}`}
+                  className="group"
+                >
+                  <div className="w-80 bg-white transition-shadow duration-300">
+                    {/* Blog Image */}
+                    <div className="aspect-square bg-white rounded-2xl overflow-hidden mb-4">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={800}
+                        height={800}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    
+                    {/* Blog Info */}
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">
+                        {post.description}
+                      </p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider">
+                        {new Date(post.date).toLocaleDateString('en-US', { 
+                          month: 'short', 
+                          day: 'numeric', 
+                          year: 'numeric' 
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </StaggeredAnimation>
+          </div>
+        </div>
+      </AnimatedElement>
 
+      <div className="max-w-6xl mx-auto px-6 pb-32">
         {/* Skills Section */}
         <AnimatedElement animation="fadeUp" delay={400}>
           <SkillsSection />
