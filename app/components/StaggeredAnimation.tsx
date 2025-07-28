@@ -1,10 +1,10 @@
 'use client';
 
 import { AnimatedElement } from './AnimatedElement';
-import { ReactNode } from 'react';
+import { ReactNode, Children } from 'react';
 
 interface StaggeredAnimationProps {
-  children: ReactNode[];
+  children: ReactNode;
   staggerDelay?: number;
   animation?: 'fade' | 'fadeUp' | 'fadeDown' | 'fadeLeft' | 'fadeRight' | 'scale' | 'scaleAndFade' | 'slideUp' | 'slideDown';
   duration?: number;
@@ -18,9 +18,11 @@ export function StaggeredAnimation({
   duration = 400,
   className = ''
 }: StaggeredAnimationProps) {
+  const childrenArray = Children.toArray(children);
+  
   return (
     <>
-      {children.map((child, index) => (
+      {childrenArray.map((child, index) => (
         <AnimatedElement
           key={index}
           delay={index * staggerDelay}
