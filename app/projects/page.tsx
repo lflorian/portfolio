@@ -49,7 +49,7 @@ export default function ProjectsPage() {
 
               {/* Content section */}
               <div className="md:w-1/2 space-y-3">
-                <h2 className="text-5xl font-bold text-gray-900 break-words">
+                <h2 className="text-5xl font-bold text-gray-900 [word-break:break-word] [overflow-wrap:anywhere]">
                   {project.title}
                 </h2>
 
