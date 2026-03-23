@@ -1,10 +1,52 @@
 ---
 title: I analyzed 15.943 protocols of the German Bundestag for humor. Here's what I found out.
 description: "How the AfD changes parliamentary humor: An analysis of over 764 protocols."
-image: /placeholder.jpg
+image: /blog/no-laughing-matter/Showcase.png
 date: 03-22-2026
 ---
 
-### Headline
+Every word spoken in Germany's parliament is recorded — and so is every laugh. The Bundestag's stenographic service doesn't just transcribe speeches; it documents how the chamber reacts. Applause, heckling, and laughter are all captured in standardized annotations within the official plenary protocols.
+I built a macOS program in Swift that parses these protocols, detects every recorded instance of laughter or amusement, and classifies each event by its communicative function using a large language model. The dataset covers legislative periods 18 through 21 — roughly 2013 to today — and contains 15,943 humor events.
+This started as a research paper for school, combining two interests of mine: political science and computer science. The full paper is available [here](/blog/no-laughing-matter/Research%20Paper.pdf) and the source code is on [GitHub](https://github.com/lflorian/no-laughing-matter). Below is a summary of what I found.
 
-Placeholder
+### The Bundestag laughs differently now
+
+The German stenographic service distinguishes between two types of humor reactions: Heiterkeit and Lachen. The distinction matters. Heiterkeit signals shared, good-natured amusement — laughing with someone. Lachen, in parliamentary context, is more dismissive — laughing at someone.
+In the 18th legislative period (2013–2017), 73% of all humor events were Heiterkeit. By the current 21st period, that share has dropped to 44%. Laughter — the confrontational kind — now dominates.
+
+![Share of Heiterkeit and Lachen by legislative period](/blog/no-laughing-matter/Heiterkeit-Chart.png)
+
+The sharpest single shift occurred between the 18th and 19th periods, coinciding with the entry of the Alternative for Germany (AfD) into parliament in 2017. The total number of humor events also tripled, with nearly all of the increase attributable to Lachen.
+
+![Humor markers over time — vertical line marks the AfD's entry into parliament](/blog/no-laughing-matter/Heiterkeit-timeline.png)
+
+### Aggressive humor has doubled
+
+To understand not just when but why the Bundestag laughs, I used an LLM to classify each event according to Avner Ziv's five-function model of humor: aggressive, social, defensive, intellectual, and sexual.
+The results are striking. In the 18th period, humor functions were relatively balanced — aggressive at 34%, social at 31%, intellectual at 19%, defensive at 17%. By the 21st period, aggressive humor accounts for 68% of all events. Social, intellectual, and defensive functions have all declined sharply.
+The Bundestag doesn't laugh less than it used to. It laughs more — but the nature of that laughter has fundamentally changed.
+
+### Who laughs, who gets laughed at
+
+Some patterns on the actor level stand out. Normalized by faction size, the Greens and the AfD show the highest humor participation per member — both on the laughing and the triggering side.
+
+![Heiterkeit and Lachen by faction](/blog/no-laughing-matter/Heiterkeit-Fractions.png)
+
+Among individual members, Helge Lindh (SPD, 233 events) and Stephan Brandner (AfD, 232 events) triggered the most humor markers across the entire period, followed by Olaf Scholz (160). When looking at who is named as laughing in the protocols, 6 of the top 10 are AfD members — suggesting a particularly demonstrative, individually identifiable laughing behavior.
+
+![Members who triggered the most humor markers](/blog/no-laughing-matter/Auslösende_Einzelpersonen.png)
+
+![Members most frequently named as laughing](/blog/no-laughing-matter/Reagierende_Einzelpersonen.png)
+There's also a gender gap: women are consistently underrepresented in humor events relative to their share of parliament, with a difference of about 7–9 percentage points across all periods studied.
+
+### What the people involved say
+
+I spoke with former Bundestag President Norbert Lammert (CDU), who presided over parliament from 2005 to 2017, and received written statements from Gregor Gysi (Die Linke) and Stephan Brandner (AfD).
+Lammert was unsurprised by the shift from Heiterkeit to Lachen, noting that between established factions and the AfD there exists a mutual need for demarcation that cannot be bridged through humor. He drew a historical parallel to the entry of the Greens in 1983, which similarly disrupted parliamentary culture — though through provocative actions rather than targeted polemic.
+Gysi pointed to a broader societal trend toward what he called an "outrage culture" that is reflected in parliamentary debates, with the AfD in particular bringing a sharpness that makes humorous exchange difficult. He emphasized self-irony as his preferred rhetorical tool — humor at one's own expense can be used without limits, while humor at others' expense has clear boundaries in human dignity.
+Brandner described humor as a deliberate rhetorical instrument to expose contradictions and generate reach, while framing the AfD as being on the receiving end of attacks. The data tells a more nuanced story: the AfD produces nearly half of all humor events in the 21st period despite being the second-largest faction, and has the lowest Heiterkeit share of any faction — meaning they laugh at others more than any other group.
+
+### The bigger picture
+
+Former Bundestag President Lammert observed that what applies to parliament generally applies to life: people who present themselves with composure and a degree of lightness tend to be more persuasive than those driven by zealous determination. The data suggests that this kind of composure — the shared enjoyment of a well-turned phrase across factional lines — is becoming rarer. The Bundestag is louder, funnier in absolute numbers, and more confrontational in tone.
+Whether that reflects a deeper shift in how German society handles disagreement is beyond what this dataset can prove. But if parliament is a mirror, the reflection has gotten sharper.

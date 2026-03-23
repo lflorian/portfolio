@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'imprint | florianlammert',
-    description: 'A collection of my software development projects and technical work.',
+    title: 'Imprint',
+    description: 'Legal notice and imprint for florianlammert.com.',
 };
 
 export default function ImprintPage() {

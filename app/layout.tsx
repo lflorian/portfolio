@@ -6,10 +6,19 @@ import { Header } from "./sections/Header";
 import { Footer } from "./sections/Footer";
 
 export const metadata: Metadata = {
-  title: "portfolio | florianlammert",
-  description: "Learn more about my work and projects.",
+  metadataBase: new URL('https://florianlammert.com'),
+  title: {
+    default: 'Florian Lammert — Software Developer',
+    template: '%s | florianlammert',
+  },
+  description: 'Portfolio of Florian Lammert — software developer. Explore my projects, blog posts, and get in touch.',
   icons: {
     icon: '/favicon.png',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Florian Lammert',
   },
 };
 

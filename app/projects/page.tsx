@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { StaggeredAnimation } from '@/app/components/StaggeredAnimation';
 
 export const metadata: Metadata = {
-  title: 'projects | florianlammert',
+  title: 'Projects',
   description: 'A collection of my software development projects and technical work.',
 };
 

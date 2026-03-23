@@ -18,6 +18,7 @@ export interface ProjectFrontmatter {
   images?: string[];
   overview?: string;
   approach?: string;
+  paperUrl?: string;
 }
 
 export interface BlogFrontmatter {

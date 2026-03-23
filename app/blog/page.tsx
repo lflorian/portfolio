@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import { StaggeredAnimation } from '@/app/components/StaggeredAnimation';
 
 export const metadata: Metadata = {
-  title: 'blog | florianlammert',
-  description: 'A collection of my software development projects and technical work.',
+  title: 'Blog',
+  description: 'Read my latest blog posts on software development, projects, and technical insights.',
 };
 
 export default function BlogPage() {

@@ -1,11 +1,21 @@
 ---
 title: "No laughing matter"
 description: "A computational analysis of parliamentary humor"
-image: "/placeholder.jpg"
+image: "/projects/no-laughing-matter/no-laughing-header.png"
 date: "03-22-2026"
-overview: "Placeholder"
-approach: "Placeholder"
+githubUrl: "https://github.com/lflorian/no-laughing-matter"
+paperUrl: "/blog/no-laughing-matter/Research Paper.pdf"
+overview: "No Laughing Matter is a native macOS application built in Swift that parses, classifies, and visualizes humor events in plenary protocols of the German Bundestag. It processes the official XML-formatted transcripts published by Germany's parliament, detects laughter and amusement markers recorded by the stenographic service, and classifies each event by its communicative function using an LLM.
+The program covers legislative periods 18 through 21 (2013–present) and has processed over 15,900 individual humor events across thousands of plenary sessions."
+approach: "The analysis pipeline runs in three stages:
+1. Deterministic detection. The program downloads official plenary protocols via the Bundestag's open data API and scans XML comment elements for the markers Heiterkeit (amusement) and Lachen (laughter) using pattern matching. For each match, it extracts the reacting factions, any individually named members, and the surrounding speech context — including the current speaker, their party affiliation, government role, and the agenda item under debate.
+2. LLM-based classification. Each detected event is sent to an LLM (Claude Haiku 4.5) along with its extracted context. A carefully iterated German-language prompt instructs the model to classify the humor event according to Avner Ziv's five-function model of humor — aggressive, social, defensive, intellectual, or sexual — assigning both a primary and an optional secondary function, a confidence score, and a written justification. The prompt includes few-shot examples and enforces structured output via tool use.
+3. Statistical analysis and visualization. The program aggregates the classified events across time, faction, speaker demographics (gender, age), and function category. It generates charts and cross-tabulations directly within the app, enabling exploration of trends like the shift from communal amusement (Heiterkeit) to confrontational laughter (Lachen) since 2017.
+Demographic enrichment is performed by cross-referencing the Bundestag's official member dataset (XML), computing each speaker's age at the time of the session and normalizing humor participation rates by faction size and demographic composition."
 images:
-  - "/placeholder.jpg"
+  - "/projects/no-laughing-matter/no-laughing-header.png"
+  - "/projects/no-laughing-matter/Corner.png"
+  - "/projects/no-laughing-matter/Comment-Closeup.png"
+  - "/projects/no-laughing-matter/Close-Up.png"
 isActive: true
 ---

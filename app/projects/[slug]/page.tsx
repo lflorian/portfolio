@@ -74,6 +74,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   Visit Website
                 </a>
               )}
+
+              {frontmatter.githubUrl && (
+                <a href={frontmatter.githubUrl} target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors inline-block">
+                  GitHub
+                </a>
+              )}
+
+              {frontmatter.paperUrl && (
+                <a href={frontmatter.paperUrl} target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors inline-block">
+                  Research Paper
+                </a>
+              )}
             </div>
           </div>
         </AnimatedElement>

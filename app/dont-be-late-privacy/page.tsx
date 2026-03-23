@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy - Don&apos;t be late! | florianlammert',
-    description: 'Privacy policy for the Don&apos;t be late! iOS app.',
+    title: 'Privacy Policy — Don\'t be late!',
+    description: 'Privacy policy for the Don\'t be late! iOS app.',
 };
 
 export default function DontBeLatePrivacyPage() {

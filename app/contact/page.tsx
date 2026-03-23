@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'contact | florianlammert',
+  title: 'Contact',
   description: 'Get in touch with Florian Lammert for collaboration and inquiries.',
 };
 
