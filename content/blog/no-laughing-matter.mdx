@@ -5,63 +5,58 @@ image: /blog/no-laughing-matter/Showcase.png
 date: 03-22-2026
 ---
 
-Every word spoken in Germany's parliament is recorded — and so is every laugh. The Bundestag's stenographic service includes the reaction of the chamber to jokes, fails, punchlines etc. in standardized annotations within the official plenary protocols.
+Every word spoken in Germany's parliament is recorded — and so is every laugh. The Bundestag's stenographic service records not only the spoken word but also the reactions in the plenary chamber.
 
-I built a macOS program in Swift that parses these protocols, detects every recorded instance of laughter or amusement, and classifies each event by its communicative function using a large language model. The dataset covers legislative periods 18 through 21 — roughly 2013 to today — and contains 15,943 humor events.
-
-This started as a research paper for school, combining my interests in political and computer science. The full paper is available [here](/blog/no-laughing-matter/Research%20Paper.pdf) and the source code can be found on [GitHub](https://github.com/lflorian/no-laughing-matter). Below is a summary of my findings..
+I made use of these annotations in my research paper and built a macOS program in Swift that downloads, parses, analyzes, and visualizes the protocols. The full paper is available [here](/blog/no-laughing-matter/Research%20Paper.pdf) and the source code can be found on [GitHub](https://github.com/lflorian/no-laughing-matter).
 
 
 ### Less amusement and more laughter
 
-The stenographic service distinguishes between two types of humor reactions: Heiterkeit and Lachen. While „Heiterkeit“ signals shared, good-natured amusement (laughing with someone), „Lachen“ is more dismissive (laughing at someone).
+The stenographic service distinguishes between two types of humor markers in the protocols: *Heiterkeit* and *Lachen*. The former denotes laughing *with* someone, with positive intent. *Lachen*, by contrast, is comparable to laughing *at* someone — a more dismissive kind.
 
-In the 18th legislative period (2013–2017), 73% of all humor events were Heiterkeit. By the current 21st period, that share has dropped to 44%. Laughter (the confrontational kind) now dominates.
+In the 18th legislative period (2013–2017), 73% of all humor markers were *Heiterkeit*. By the 21st period (from 2025), that share has dropped to 44%, meaning that the more confrontational *Lachen* now dominates.
 
 ![Share of Heiterkeit and Lachen by legislative period](/blog/no-laughing-matter/Heiterkeit-Chart.png)
 
-The sharpest single shift occurred between the 18th and 19th periods, coinciding with the entry of the Alternative for Germany (AfD) into parliament in 2017. The total number of humor events also tripled, with nearly all of the increase attributable to Lachen.
+The sharpest shift occurred between the 18th and 19th periods, coinciding with the entry of the Alternative for Germany (AfD) into parliament in 2017. The total number of *Heiterkeit* and *Lachen* events combined roughly tripled, with nearly all of the growth attributable to additional *Lachen*.
 
-![Humor markers over time — vertical line marks the AfD's entry into parliament](/blog/no-laughing-matter/Heiterkeit-timeline.png)
+![Humor markers over time — the vertical line marks the AfD's entry into parliament](/blog/no-laughing-matter/Heiterkeit-timeline.png)
 
-The described shift applies to all parties in the parliament, with some laugh (Lachen) more than others.
+The described shift affects all parties, though some show a proportionally higher share of *Lachen* than others.
 
 ![Heiterkeit and Lachen by faction](/blog/no-laughing-matter/Heiterkeit-Fractions.png)
 
 
-### Aggressive humor’s share has doubled
+### Aggressive humor's share has doubled
 
-To understand not just when but why the Bundestag laughs, I used an LLM to classify each event according to Avner Ziv's five-function model of humor: aggressive, social, defensive, intellectual, and sexual.
-In the 18th period, humor functions were relatively balanced — aggressive at 34%, social at 31%, intellectual at 19%, defensive at 17%. By the 21st period, aggressive humor accounts for 68% of all events. Social, intellectual, and defensive functions have all declined sharply.
-The intention distribution of WP18 (2013-2017) is pictured on the left with WP21 (2025–present) pictured on the right.
+To answer not just the question of *when* and *where* the Bundestag laughs, but also *why*, I used an LLM to classify each detected event according to Avner Ziv's five-function model of humor. This model distinguishes between aggressive, social, defensive, intellectual, and sexual humor.
 
-![Intention distribution by WP](/blog/no-laughing-matter/Intention-Distribution.png)
+While the shares in the 18th legislative period were still relatively balanced, the 21st period is dominated by an aggressive humor share of 68%.
+
+![Intention distribution by legislative period](/blog/no-laughing-matter/Intention-Distribution.png)
+
 
 ### Who triggers, who reacts
 
-Some patterns on the actor level stand out. Normalized by faction size, the Greens and the AfD show the highest humor participation per member — both on the laughing and the triggering side.
+Some actor-level patterns stand out. Normalized by faction size, the Greens and the AfD share the distinction of having the highest humor participation per member — both on the triggering and the reacting side.
 
-Among individual members, Helge Lindh (SPD, 233 events) and Stephan Brandner (AfD, 232 events) triggered the most humor markers across the entire period, followed by Olaf Scholz (160). When looking at who is named as laughing in the protocols, 6 of the top 10 are AfD members — suggesting a particularly demonstrative, individually identifiable laughing behavior.
+Among individual members, Helge Lindh (SPD, 233 events) and Stephan Brandner (AfD, 232 events) stand out, having triggered by far the most humor markers in the protocols. They are followed by Olaf Scholz (SPD, 160 events). Looking at who is recorded as laughing (*Heiterkeit* or *Lachen*) in the protocols, 6 of the top 10 are AfD members — suggesting a particularly demonstrative, individually identifiable laughing behavior.
 
 ![Members who triggered the most humor markers](/blog/no-laughing-matter/Auslösende_Einzelpersonen.png)
 ![Members most frequently named as laughing](/blog/no-laughing-matter/Reagierende_Einzelpersonen.png)
 
-There's also a gender gap: women are consistently underrepresented in humor events relative to their share of parliament, with a difference of about 7–9 percentage points across all periods studied.
-
 
 ### What the people involved say
 
-I spoke with former Bundestag President Prof. Dr. Norbert Lammert (CDU), who presided over parliament from 2005 to 2017, and received written statements from Dr. Gregor Gysi (Die Linke) and right-wing extremist Stephan Brandner (AfD).
+As part of my research paper, I had the opportunity to conduct an interview with Prof. Dr. Norbert Lammert (CDU), who served as President of the German Bundestag from 2005 to 2017. Dr. Gregor Gysi (Die Linke) and the right-wing extremist AfD politician Stephan Brandner also responded to my inquiries.
 
-Lammert was unsurprised by the shift from Heiterkeit to Lachen, noting that between established factions and the AfD there exists a mutual need for demarcation that cannot be bridged through humor. He drew a historical parallel to the entry of the Greens in 1983, which similarly disrupted parliamentary culture — more through provocative actions rather than targeted polemic.
+Prof. Lammert was unsurprised by the shift from *Heiterkeit* to *Lachen*, noting that between the established factions and the AfD there exists a mutual need for demarcation that cannot be bridged through humor. He drew a parallel to the entry of the Greens in 1983, which similarly disrupted parliamentary culture — though more through provocative actions than through targeted polemic.
 
-Gysi pointed to a broader societal trend toward what he called an "outrage culture" that is reflected in parliamentary debates, with the AfD in particular bringing a sharpness that makes humorous exchange difficult. He emphasized self-irony as his preferred rhetorical tool: humor at one's own expense can be used without limits, while humor at others' expense has clear boundaries in human dignity.
+Dr. Gysi pointed to a broader societal trend toward what he described as an "outrage culture," which is also reflected in parliamentary debates. The AfD in particular, he argued, brings a sharpness that makes humorous exchange difficult. He emphasized self-irony as his preferred rhetorical tool: humor at one's own expense can be deployed without limits, whereas humor at others' expense finds clear boundaries in human dignity.
 
-Brandner described humor as a deliberate rhetorical instrument to expose contradictions and generate reach, while portraying the AfD as being on the receiving end of attacks. The data tells a more nuanced story: the AfD produces nearly half of all humor events in the 21st period despite being the second-largest faction, and has the lowest Heiterkeit share of any faction — meaning they laugh (Lachen) at others more than any other group.
+Brandner described humor as a deliberate rhetorical instrument to expose contradictions and generate reach, portraying the AfD as a target of attacks. The data paints a more nuanced picture: in the 21st legislative period, the AfD produces nearly half of all humor events despite being only the second-largest faction, and has the lowest *Heiterkeit* share of any faction — meaning they laugh (*Lachen*) at others more frequently than any other faction.
 
 
 ### The bigger picture
 
-Former Bundestag President Lammert observed that what applies to parliament generally applies to life: people who present themselves with composure and a degree of lightness tend to be more persuasive than those driven by zealous determination. The data suggests that this kind of composure — the shared enjoyment of a well-turned phrase across factional lines — is becoming rarer. The Bundestag is louder, funnier in absolute numbers, and more confrontational in tone.
-
-Whether that reflects a deeper shift in how German society handles disagreement is beyond what this dataset can prove. But if parliament is a mirror, the reflection has gotten sharper.
+In our interview, Prof. Lammert observed that what applies to parliament and parliamentary debates generally applies to real life as well. If this is true, the observed shift says something not only about the Bundestag but also about the way people in our society interact with one another. Prof. Lammert recommends presenting oneself with composure and poise rather than fierce determination — for as a rule, it is not those with the greatest zeal who persuade, but those with the greatest composure. Whether this composure will regain more space in the Bundestag in the near future remains to be seen. The data suggests that the path there is currently growing longer rather than shorter.
