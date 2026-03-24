@@ -93,6 +93,15 @@
     font-style: italic;
   }
   
+  .prose a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    color: #1d4ed8;
+  }
+
   .prose code {
     background-color: #f3f4f6;
     padding: 0.125rem 0.25rem;
