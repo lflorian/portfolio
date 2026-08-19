@@ -17,9 +17,6 @@ export const Footer = () => {
                         <Link href="/imprint" className="text-gray-500 hover:text-gray-300 transition-colors">
                             Imprint
                         </Link>
-                        <Link href="/contact" className="text-gray-500 hover:text-gray-300 transition-colors">
-                            Contact
-                        </Link>
                     </div>
                     </AnimatedElement>
                 </div>

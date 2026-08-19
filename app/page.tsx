@@ -1,5 +1,4 @@
 import { HeroSection } from "./sections/Hero";
-import { SkillsSection } from "./sections/Skills";
 import { getAllProjects, getAllBlogPosts } from '@/lib/mdx';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -35,13 +34,13 @@ export default function Home() {
       {/* Projects Horizontal Scroll - Full Width */}
       <AnimatedElement animation="fadeUp" delay={250}>
         <div className="overflow-x-auto pb-4 scrollbar-hide">
-          <div className="flex gap-6 w-max pl-6 sm:pl-8 lg:pl-[calc((100vw-72rem)/2+1.5rem)]">
+          <div className="flex gap-6 w-max pl-6 pr-6 sm:pl-8 sm:pr-8 lg:pl-[calc((100vw-72rem)/2+1.5rem)] lg:pr-[calc((100vw-72rem)/2+1.5rem)]">
             <StaggeredAnimation 
               animation="scaleAndFade" 
               staggerDelay={100}
               duration={400}
             >
-              {projects.slice(0, 4).map((project) => (
+              {projects.map((project) => (
                 <Link 
                   key={project.slug} 
                   href={`/projects/${project.slug}`}
@@ -97,14 +96,14 @@ export default function Home() {
       
       {/* Blog Horizontal Scroll - Full Width */}
       <AnimatedElement animation="fadeUp" delay={350}>
-        <div className="overflow-x-auto pb-4 scrollbar-hide">
-          <div className="flex gap-6 w-max pl-6 sm:pl-8 lg:pl-[calc((100vw-72rem)/2+1.5rem)]">
+        <div className="overflow-x-auto pb-32 scrollbar-hide">
+          <div className="flex gap-6 w-max pl-6 pr-6 sm:pl-8 sm:pr-8 lg:pl-[calc((100vw-72rem)/2+1.5rem)] lg:pr-[calc((100vw-72rem)/2+1.5rem)]">
             <StaggeredAnimation 
               animation="scaleAndFade" 
               staggerDelay={100}
               duration={400}
             >
-              {blogPosts.slice(0, 4).map((post) => (
+              {blogPosts.map((post) => (
                 <Link 
                   key={post.slug} 
                   href={`/blog/${post.slug}`}
@@ -146,31 +145,6 @@ export default function Home() {
         </div>
       </AnimatedElement>
 
-      <div className="max-w-6xl mx-auto px-6 pb-32">
-        {/* Skills Section */}
-        <AnimatedElement animation="fadeUp" delay={400}>
-          <SkillsSection />
-        </AnimatedElement>
-
-        {/* Contact Section */}
-        <AnimatedElement animation="scaleAndFade" delay={500}>
-          <div className="mt-24">
-            <div className="bg-gray-100 rounded-3xl px-12 py-10">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-                Let&apos;s Connect 👋
-              </h2>
-              <div className="pt-4">
-                <Link 
-                  href="/contact"
-                  className="inline-block bg-black text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-colors duration-200"
-                >
-                  Get In Touch
-                </Link>
-              </div>
-            </div>
-          </div>
-        </AnimatedElement>
-      </div>
     </main>
   );
 }
