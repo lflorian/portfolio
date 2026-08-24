@@ -1,5 +1,5 @@
 import { HeroSection } from "./sections/Hero";
-import { getAllProjects, getAllBlogPosts } from '@/lib/mdx';
+import { getAllProjects, getHomeBlogPosts } from '@/lib/mdx';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatedElement } from '@/app/components/AnimatedElement';
@@ -7,7 +7,7 @@ import { StaggeredAnimation } from '@/app/components/StaggeredAnimation';
 
 export default function Home() {
   const projects = getAllProjects();
-  const blogPosts = getAllBlogPosts();
+  const blogPosts = getHomeBlogPosts();
 
   return (
     <main className="relative overflow-hidden">

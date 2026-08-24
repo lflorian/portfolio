@@ -27,6 +27,7 @@ export interface BlogFrontmatter {
   image: string;
   date: string;
   slug: string;
+  hideFromHome?: boolean;
 }
 
 export function getProjectSlugs(): string[] {
@@ -122,4 +123,9 @@ export function getAllBlogPosts(): BlogFrontmatter[] {
   return posts.sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+}
+
+export function getHomeBlogPosts(): BlogFrontmatter[] {
+  // Posts can opt out of the home page with `hideFromHome: true` in their frontmatter
+  return getAllBlogPosts().filter((post) => !post.hideFromHome);
 }
